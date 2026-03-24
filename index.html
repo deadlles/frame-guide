@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рамки для новеллы — Инструкция</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f14; color: #e0ddd8; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; background: #0f0f14cc; backdrop-filter: blur(12px); border-bottom: 1px solid #2a2a38; z-index: 100; padding: 0 24px; display: flex; align-items: center; gap: 8px; height: 52px; overflow-x: auto; }
+  nav a { color: #888; text-decoration: none; font-size: 13px; white-space: nowrap; padding: 6px 12px; border-radius: 8px; transition: all .2s; }
+  nav a:hover, nav a.active { color: #e0ddd8; background: #1e1e2e; }
+
+  /* HERO */
+  .hero { padding: 120px 24px 60px; text-align: center; max-width: 700px; margin: 0 auto; }
+  .hero h1 { font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #c9b8ff, #ff9de2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
+  .hero p { color: #888; font-size: 16px; line-height: 1.6; }
+
+  /* SECTIONS */
+  section { max-width: 800px; margin: 0 auto; padding: 48px 24px; border-bottom: 1px solid #1e1e2e; }
+  section:last-child { border-bottom: none; }
+  h2 { font-size: 22px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; color: #c9b8ff; }
+
+  /* SCROLL DIAGRAM */
+  .scroll-diagram { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 16px; padding: 24px; margin: 24px 0; }
+  .scroll-part { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 10px; margin-bottom: 8px; }
+  .scroll-part:last-child { margin-bottom: 0; }
+  .scroll-part.top { background: #2a2040; }
+  .scroll-part.middle { background: #1a2a20; }
+  .scroll-part.bottom { background: #2a2040; }
+  .scroll-icon { font-size: 24px; min-width: 36px; text-align: center; }
+  .scroll-info { flex: 1; }
+  .scroll-info strong { display: block; font-size: 14px; margin-bottom: 4px; }
+  .scroll-info span { font-size: 12px; color: #888; }
+  .scroll-badge { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+  .badge-fixed { background: #3a2060; color: #c9b8ff; }
+  .badge-repeat { background: #1a4030; color: #5fdd9d; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+  .step { display: flex; gap: 16px; align-items: flex-start; background: #1a1a26; border: 1px solid #2a2a38; border-radius: 12px; padding: 16px; }
+  .step-num { min-width: 32px; height: 32px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+  .step-text strong { display: block; font-size: 14px; margin-bottom: 4px; }
+  .step-text span { font-size: 13px; color: #888; line-height: 1.5; }
+  code { background: #2a2a3a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #c9b8ff; font-family: monospace; }
+
+  /* SIZES TABLE */
+  .sizes-grid { display: grid; gap: 12px; }
+  .size-card { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 12px; padding: 16px; }
+  .size-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .size-card-header span { font-size: 20px; }
+  .size-card-header strong { font-size: 14px; }
+  .size-card-header .req { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #3a1a1a; color: #ff8080; font-weight: 600; }
+  .size-card-header .opt { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #1a2a3a; color: #80b0ff; font-weight: 600; }
+  .size-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid #1e1e2e; }
+  .size-row:last-child { border-bottom: none; }
+  .size-row span:first-child { color: #888; }
+  .size-row span:last-child { color: #e0ddd8; font-family: monospace; }
+  .config-block { background: #0f0f18; border-radius: 8px; padding: 12px; margin-top: 12px; font-family: monospace; font-size: 12px; color: #5fdd9d; line-height: 1.8; }
+
+  /* ERRORS */
+  .errors { display: flex; flex-direction: column; gap: 10px; }
+  .error-card { background: #1a1a26; border: 1px solid #2a2a38; border-left: 3px solid #ff6b6b; border-radius: 0 12px 12px 0; padding: 14px 16px; }
+  .error-card strong { display: block; font-size: 13px; color: #ff9090; margin-bottom: 4px; }
+  .error-card span { font-size: 12px; color: #888; }
+
+  /* TIP */
+  .tip { background: #1a2030; border: 1px solid #2a3a50; border-radius: 12px; padding: 16px; margin: 16px 0; font-size: 13px; color: #80aaff; line-height: 1.6; }
+  .tip::before { content: '💡 '; }
+
+  /* ACCENT GRID */
+  .accent-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 16px 0; }
+  .accent-pos { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 8px; padding: 12px; text-align: center; font-size: 12px; color: #888; }
+  .accent-pos strong { display: block; color: #c9b8ff; margin-bottom: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#intro" class="active">Начало</a>
+  <a href="#how">Как работает</a>
+  <a href="#steps">Нарезка</a>
+  <a href="#sizes">Размеры</a>
+  <a href="#accents">Акценты</a>
+  <a href="#errors">Ошибки</a>
+</nav>
+
+<div class="hero">
+  <h1>🎨 Рамки для новеллы</h1>
+  <p>Инструкция для арт-директора. Как нарисовать и подготовить рамки для всех UI-элементов игры.</p>
+</div>
+
+<section id="how">
+  <h2>✨ Как работает рамка</h2>
+  <p style="color:#888; font-size:14px; margin-bottom:16px;">Каждая рамка — это <strong style="color:#e0ddd8">3 файла PNG</strong>. Верх и низ фиксированы, середина растягивается под контент.</p>
+
+  <div class="scroll-diagram">
+    <div class="scroll-part top">
+      <div class="scroll-icon">👑</div>
+      <div class="scroll-info">
+        <strong>1_top.png — «корона»</strong>
+        <span>Верхний орнамент/декор. Не тянется.</span>
+      </div>
+      <span class="scroll-badge badge-fixed">фиксированная</span>
+    </div>
+    <div class="scroll-part middle">
+      <div class="scroll-icon">🔁</div>
+      <div class="scroll-info">
+        <strong>2_middle.png — «обои»</strong>
+        <span>Повторяется вниз сколько нужно. Должна быть бесшовной!</span>
+      </div>
+      <span class="scroll-badge badge-repeat">повторяется</span>
+    </div>
+    <div class="scroll-part bottom">
+      <div class="scroll-icon">🏛️</div>
+      <div class="scroll-info">
+        <strong>3_bottom.png — «подвал»</strong>
+        <span>Нижний декор. Не тянется.</span>
+      </div>
+      <span class="scroll-badge badge-fixed">фиксированная</span>
+    </div>
+  </div>
+
+  <div class="tip">Рисуй всё в @2x (Retina). В config.txt пиши вдвое меньше — PNG 120px → topHeight = 60</div>
+</section>
+
+<section id="steps">
+  <h2>🔧 Нарезка в Фотошопе</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>Создай холст</strong>
+        <span>Ширина <code>800px</code>, высота на твой выбор (например 400px). Фон — прозрачный.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>Нарисуй рамку</strong>
+        <span>Орнамент сверху и снизу. Середина — простая, без узоров (только фон + бордюры по бокам).</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>Поставь направляющие</strong>
+        <span><code>Просмотр → Новая направляющая</code><br>Пример (холст 400px, декор 120px):<br>• Горизонтальная на 120px<br>• Горизонтальная на 280px (400−120)</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <strong>Нарежь по направляющим</strong>
+        <span>Инструмент <code>Нарезка (C)</code> → <code>Просмотр → Нарезать по направляющим</code></span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text">
+        <strong>Экспортируй</strong>
+        <span><code>Файл → Экспортировать → Сохранить для Web</code><br>Формат: PNG-24, галочка Прозрачность</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-text">
+        <strong>Переименуй файлы</strong>
+        <span>Верхний → <code>1_top.png</code><br>Средний → <code>2_middle.png</code><br>Нижний → <code>3_bottom.png</code></span>
+      </div>
+    </div>
+  </div>
+
+  <h3>🧵 Как проверить бесшовность 2_middle.png</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">→</div>
+      <div class="step-text">
+        <strong>Открой 2_middle.png в Фотошопе</strong>
+        <span><code>Фильтр → Другие → Сдвиг</code> → Вертикаль = высота/2, Переносить<br>Видишь шов? Замажь Clone Stamp. Шва нет — готово ✨</span>
+      </div>
+    </div>
+  </div>
+  <div class="tip">Если середина однотонная — шва нет автоматически. Проблемы только с узорами.</div>
+</section>
+
+<section id="sizes">
+  <h2>📐 Размеры по типам рамок</h2>
+
+  <div class="sizes-grid">
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>💬</span>
+        <strong>dialogue-frame — главное текстовое окно</strong>
+        <span class="req">обязательно</span>
+      </div>
+      <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
+      <div class="size-row"><span>1_top.png высота</span><span>80–160px</span></div>
+      <div class="size-row"><span>2_middle.png высота</span><span>40–100px</span></div>
+      <div class="size-row"><span>3_bottom.png высота</span><span>80–160px</span></div>
+      <div class="config-block">topHeight = 60<br>bottomHeight = 60<br>sideInset = 12</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>🔀</span>
+        <strong>choice-frame — контейнер выборов</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>60–120px</span></div>
+      <div class="config-block">choice.topHeight = 30<br>choice.bottomHeight = 30<br>choice.sideInset = 12</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>✏️</span>
+        <strong>input-frame — ввод имени</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>60–120px</span></div>
+      <div class="config-block">input.topHeight = 30<br>input.bottomHeight = 30<br>input.sideInset = 12</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>🔔</span>
+        <strong>notification-frame — уведомления</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Компактнее диалога — делай меньше.</p>
+      <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>40–80px</span></div>
+      <div class="config-block">notification.topHeight = 20<br>notification.bottomHeight = 20<br>notification.sideInset = 10</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>👗</span>
+        <strong>wardrobe-frame — гардероб</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>60–120px</span></div>
+      <div class="config-block">wardrobe.topHeight = 30<br>wardrobe.bottomHeight = 30<br>wardrobe.sideInset = 12</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>🏷️</span>
+        <strong>speaker-badge-frame — плашка имени</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Маленькая тонкая рамочка — одна строчка текста!</p>
+      <div class="size-row"><span>Ширина PNG</span><span>300–500px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>16–30px</span></div>
+      <div class="config-block">speakerBadge.topHeight = 10<br>speakerBadge.bottomHeight = 10<br>speakerBadge.anchor = top-center<br>speakerBadge.offsetY = -55px</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>🔘</span>
+        <strong>action-button-frame — кнопка действия</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Далее, Сохранить, Отмена. Тонкая изящная рамочка.</p>
+      <div class="size-row"><span>Ширина PNG</span><span>400–600px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>20–40px</span></div>
+      <div class="config-block">actionButton.topHeight = 14<br>actionButton.bottomHeight = 14<br>actionButton.height = 52px</div>
+    </div>
+
+    <div class="size-card">
+      <div class="size-card-header">
+        <span>💎</span>
+        <strong>premium-button-frame — алмазная кнопка</strong>
+        <span class="opt">опционально</span>
+      </div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">«Поцеловать 💎15». Должна выглядеть дорого — золото, свечение!</p>
+      <div class="size-row"><span>Ширина PNG</span><span>400–600px</span></div>
+      <div class="size-row"><span>Корона/подвал</span><span>20–40px</span></div>
+      <div class="config-block">premiumButton.topHeight = 14<br>premiumButton.bottomHeight = 14<br>premiumButton.height = 52px</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="accents">
+  <h2>✨ Украшения (акценты)</h2>
+  <p style="color:#888;font-size:14px;margin-bottom:16px;">Декоративные PNG поверх рамки — корона, завитки, кристаллы. 6 позиций:</p>
+
+  <div class="accent-grid">
+    <div class="accent-pos"><strong>top-left</strong>верх-лево</div>
+    <div class="accent-pos"><strong>top-center</strong>верх-центр</div>
+    <div class="accent-pos"><strong>top-right</strong>верх-право</div>
+    <div class="accent-pos"><strong>bottom-left</strong>низ-лево</div>
+    <div class="accent-pos"><strong>bottom-center</strong>низ-центр</div>
+    <div class="accent-pos"><strong>bottom-right</strong>низ-право</div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Нарисуй PNG с прозрачным фоном</strong><span>Угловые: 40–80px. Центральные: 60–120px (@2x)</span></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Назови по позиции</strong><span><code>top-center.png</code>, <code>bottom-left.png</code> и т.д.</span></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Положи в папку accents/</strong><span>И пропиши в config.txt:</span></div>
+    </div>
+  </div>
+  <div class="config-block" style="background:#1a1a26;border:1px solid #2a2a38;border-radius:12px;padding:16px;margin-top:8px;">accent.top-center.width = 56px<br>accent.top-center.height = 32px<br>accent.top-center.offsetY = -2px</div>
+  <div class="tip">Без параметров в config.txt акценты не отображаются — движок не сканирует папку сам.</div>
+</section>
+
+<section id="errors">
+  <h2>⚠️ Частые ошибки</h2>
+
+  <div class="errors">
+    <div class="error-card">
+      <strong>Положила PNG, но не прописала в config.txt</strong>
+      <span>Движок не знает что рамка есть — покажет стандартный фон.</span>
+    </div>
+    <div class="error-card">
+      <strong>Разная ширина у трёх файлов</strong>
+      <span>Рамка ломается. Все три должны быть одной ширины.</span>
+    </div>
+    <div class="error-card">
+      <strong>Белый фон вместо прозрачного</strong>
+      <span>Будет белый прямоугольник в игре. PNG-24 + галочка Прозрачность.</span>
+    </div>
+    <div class="error-card">
+      <strong>Не проверила бесшовность 2_middle.png</strong>
+      <span>Виден шов когда текст длинный. Проверяй через Фильтр → Сдвиг.</span>
+    </div>
+    <div class="error-card">
+      <strong>Забыла делить на 2 для Retina</strong>
+      <span>PNG 120px → topHeight = 60, не 120.</span>
+    </div>
+    <div class="error-card">
+      <strong>Сделала speaker-badge такой же как dialogue</strong>
+      <span>Плашка с именем будет огромной. Это маленькая тонкая рамочка.</span>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;padding:40px;color:#444;font-size:13px;">Divine Stories · Инструкция по рамкам</div>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+</script>
+
+</body>
+</html>
