@@ -8,23 +8,19 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f14; color: #e0ddd8; }
 
-  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; background: #0f0f14cc; backdrop-filter: blur(12px); border-bottom: 1px solid #2a2a38; z-index: 100; padding: 0 24px; display: flex; align-items: center; gap: 8px; height: 52px; overflow-x: auto; }
   nav a { color: #888; text-decoration: none; font-size: 13px; white-space: nowrap; padding: 6px 12px; border-radius: 8px; transition: all .2s; }
   nav a:hover, nav a.active { color: #e0ddd8; background: #1e1e2e; }
 
-  /* HERO */
   .hero { padding: 120px 24px 60px; text-align: center; max-width: 700px; margin: 0 auto; }
   .hero h1 { font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #c9b8ff, #ff9de2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
   .hero p { color: #888; font-size: 16px; line-height: 1.6; }
 
-  /* SECTIONS */
   section { max-width: 800px; margin: 0 auto; padding: 48px 24px; border-bottom: 1px solid #1e1e2e; }
   section:last-child { border-bottom: none; }
   h2 { font-size: 22px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
   h3 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; color: #c9b8ff; }
 
-  /* SCROLL DIAGRAM */
   .scroll-diagram { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 16px; padding: 24px; margin: 24px 0; }
   .scroll-part { display: flex; align-items: center; gap: 16px; padding: 16px; border-radius: 10px; margin-bottom: 8px; }
   .scroll-part:last-child { margin-bottom: 0; }
@@ -39,7 +35,6 @@
   .badge-fixed { background: #3a2060; color: #c9b8ff; }
   .badge-repeat { background: #1a4030; color: #5fdd9d; }
 
-  /* STEPS */
   .steps { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
   .step { display: flex; gap: 16px; align-items: flex-start; background: #1a1a26; border: 1px solid #2a2a38; border-radius: 12px; padding: 16px; }
   .step-num { min-width: 32px; height: 32px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
@@ -47,7 +42,6 @@
   .step-text span { font-size: 13px; color: #888; line-height: 1.5; }
   code { background: #2a2a3a; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #c9b8ff; font-family: monospace; }
 
-  /* SIZES TABLE */
   .sizes-grid { display: grid; gap: 12px; }
   .size-card { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 12px; padding: 16px; }
   .size-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
@@ -61,17 +55,14 @@
   .size-row span:last-child { color: #e0ddd8; font-family: monospace; }
   .config-block { background: #0f0f18; border-radius: 8px; padding: 12px; margin-top: 12px; font-family: monospace; font-size: 12px; color: #5fdd9d; line-height: 1.8; }
 
-  /* ERRORS */
   .errors { display: flex; flex-direction: column; gap: 10px; }
   .error-card { background: #1a1a26; border: 1px solid #2a2a38; border-left: 3px solid #ff6b6b; border-radius: 0 12px 12px 0; padding: 14px 16px; }
   .error-card strong { display: block; font-size: 13px; color: #ff9090; margin-bottom: 4px; }
   .error-card span { font-size: 12px; color: #888; }
 
-  /* TIP */
   .tip { background: #1a2030; border: 1px solid #2a3a50; border-radius: 12px; padding: 16px; margin: 16px 0; font-size: 13px; color: #80aaff; line-height: 1.6; }
   .tip::before { content: '💡 '; }
 
-  /* ACCENT GRID */
   .accent-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 16px 0; }
   .accent-pos { background: #1a1a26; border: 1px solid #2a2a38; border-radius: 8px; padding: 12px; text-align: center; font-size: 12px; color: #888; }
   .accent-pos strong { display: block; color: #c9b8ff; margin-bottom: 4px; font-size: 13px; }
@@ -85,6 +76,7 @@
   <a href="#steps">Нарезка</a>
   <a href="#sizes">Размеры</a>
   <a href="#accents">Акценты</a>
+  <a href="#config">Config</a>
   <a href="#errors">Ошибки</a>
 </nav>
 
@@ -203,7 +195,7 @@
       <div class="size-row"><span>1_top.png высота</span><span>80–160px</span></div>
       <div class="size-row"><span>2_middle.png высота</span><span>40–100px</span></div>
       <div class="size-row"><span>3_bottom.png высота</span><span>80–160px</span></div>
-      <div class="config-block">topHeight = 60<br>bottomHeight = 60<br>sideInset = 12</div>
+      <div class="config-block">topHeight = 60<br>bottomHeight = 60<br>sideInset = 12<br>contentPadding = 8px</div>
     </div>
 
     <div class="size-card">
@@ -212,6 +204,7 @@
         <strong>choice-frame — контейнер выборов</strong>
         <span class="opt">опционально</span>
       </div>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">⚠️ Это контейнер вокруг ВСЕХ кнопок выбора, не отдельная кнопка.</p>
       <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
       <div class="size-row"><span>Корона/подвал</span><span>60–120px</span></div>
       <div class="config-block">choice.topHeight = 30<br>choice.bottomHeight = 30<br>choice.sideInset = 12</div>
@@ -234,7 +227,7 @@
         <strong>notification-frame — уведомления</strong>
         <span class="opt">опционально</span>
       </div>
-      <p style="font-size:12px;color:#888;margin-bottom:10px;">Компактнее диалога — делай меньше.</p>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Компактнее диалога — корона/подвал меньше. Ширина та же 800px — движок сам масштабирует по ширине экрана.</p>
       <div class="size-row"><span>Ширина PNG</span><span>800px</span></div>
       <div class="size-row"><span>Корона/подвал</span><span>40–80px</span></div>
       <div class="config-block">notification.topHeight = 20<br>notification.bottomHeight = 20<br>notification.sideInset = 10</div>
@@ -257,10 +250,10 @@
         <strong>speaker-badge-frame — плашка имени</strong>
         <span class="opt">опционально</span>
       </div>
-      <p style="font-size:12px;color:#888;margin-bottom:10px;">Маленькая тонкая рамочка — одна строчка текста!</p>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Маленькая тонкая рамочка — одна строчка текста! Не делай как диалог.</p>
       <div class="size-row"><span>Ширина PNG</span><span>300–500px</span></div>
       <div class="size-row"><span>Корона/подвал</span><span>16–30px</span></div>
-      <div class="config-block">speakerBadge.topHeight = 10<br>speakerBadge.bottomHeight = 10<br>speakerBadge.anchor = top-center<br>speakerBadge.offsetY = 25px</div>
+      <div class="config-block">speakerBadge.topHeight = 10<br>speakerBadge.bottomHeight = 10<br>speakerBadge.sideInset = 8<br>speakerBadge.anchor = top-center<br>speakerBadge.offsetY = 25px</div>
     </div>
 
     <div class="size-card">
@@ -269,10 +262,10 @@
         <strong>action-button-frame — кнопка действия</strong>
         <span class="opt">опционально</span>
       </div>
-      <p style="font-size:12px;color:#888;margin-bottom:10px;">Далее, Сохранить, Отмена. Тонкая изящная рамочка.</p>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">Далее, Сохранить, Отмена. Тонкая горизонтальная рамочка. Высота фиксирована для удобного тапа.</p>
       <div class="size-row"><span>Ширина PNG</span><span>400–600px</span></div>
       <div class="size-row"><span>Корона/подвал</span><span>20–40px</span></div>
-      <div class="config-block">actionButton.topHeight = 14<br>actionButton.bottomHeight = 14<br>actionButton.height = 52px</div>
+      <div class="config-block">actionButton.topHeight = 14<br>actionButton.bottomHeight = 14<br>actionButton.sideInset = 16<br>actionButton.height = 52px<br>actionButton.fontWeight = 600</div>
     </div>
 
     <div class="size-card">
@@ -281,10 +274,10 @@
         <strong>premium-button-frame — алмазная кнопка</strong>
         <span class="opt">опционально</span>
       </div>
-      <p style="font-size:12px;color:#888;margin-bottom:10px;">«Поцеловать 💎15». Должна выглядеть дорого — золото, свечение!</p>
+      <p style="font-size:12px;color:#888;margin-bottom:10px;">«Поцеловать 💎15». Одна отдельная кнопка — не путать с choice-frame (контейнер)! Должна выглядеть дорого.</p>
       <div class="size-row"><span>Ширина PNG</span><span>400–600px</span></div>
       <div class="size-row"><span>Корона/подвал</span><span>20–40px</span></div>
-      <div class="config-block">premiumButton.topHeight = 14<br>premiumButton.bottomHeight = 14<br>premiumButton.height = 52px</div>
+      <div class="config-block">premiumButton.topHeight = 14<br>premiumButton.bottomHeight = 14<br>premiumButton.sideInset = 16<br>premiumButton.height = 48px<br>premiumButton.fontWeight = 600</div>
     </div>
 
   </div>
@@ -314,11 +307,45 @@
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text"><strong>Положи в папку accents/</strong><span>И пропиши в config.txt:</span></div>
+      <div class="step-text"><strong>Положи в папку accents/ и пропиши в config.txt</strong></div>
     </div>
   </div>
-  <div class="config-block" style="background:#1a1a26;border:1px solid #2a2a38;border-radius:12px;padding:16px;margin-top:8px;">accent.top-center.width = 56px<br>accent.top-center.height = 32px<br>accent.top-center.offsetY = -2px</div>
+  <div class="config-block" style="background:#1a1a26;border:1px solid #2a2a38;border-radius:12px;padding:16px;margin-top:8px;">accent.top-center.width = 56px<br>accent.top-center.height = 32px<br>accent.top-center.offsetX = 0px<br>accent.top-center.offsetY = -2px</div>
   <div class="tip">Без параметров в config.txt акценты не отображаются — движок не сканирует папку сам.</div>
+</section>
+
+<section id="config">
+  <h2>🎛️ Пример config.txt</h2>
+  <div class="config-block" style="background:#1a1a26;border:1px solid #2a2a38;border-radius:12px;padding:20px;font-size:12px;line-height:2;">
+    <span style="color:#888"># Цвета</span><br>
+    color.paper = #1c1c22<br>
+    color.textPrimary = #d8d4cc<br>
+    color.textSpeaker = #ece8e0<br>
+    color.choiceBg = #1e1e26<br>
+    color.premiumBg = linear-gradient(135deg, #5a5a6e, #3a3a4e)<br>
+    <br>
+    <span style="color:#888"># Диалог (обязательно)</span><br>
+    topHeight = 60<br>
+    bottomHeight = 60<br>
+    sideInset = 12<br>
+    contentPadding = 8px<br>
+    <br>
+    <span style="color:#888"># Плашка имени</span><br>
+    speakerBadge.anchor = top-center<br>
+    speakerBadge.offsetY = 25px<br>
+    <span style="color:#555"># speakerBadge.topHeight = 10</span><br>
+    <span style="color:#555"># speakerBadge.bottomHeight = 10</span><br>
+    <br>
+    <span style="color:#888"># Остальные рамки (раскомментируй если нужно)</span><br>
+    <span style="color:#555"># choice.topHeight = 30</span><br>
+    <span style="color:#555"># notification.topHeight = 20</span><br>
+    <span style="color:#555"># actionButton.topHeight = 14</span><br>
+    <span style="color:#555"># premiumButton.topHeight = 14</span><br>
+    <br>
+    <span style="color:#888"># Акценты (раскомментируй если есть файлы в accents/)</span><br>
+    <span style="color:#555"># accent.top-center.width = 56px</span><br>
+    <span style="color:#555"># accent.top-center.height = 32px</span>
+  </div>
 </section>
 
 <section id="errors">
@@ -348,6 +375,14 @@
     <div class="error-card">
       <strong>Сделала speaker-badge такой же как dialogue</strong>
       <span>Плашка с именем будет огромной. Это маленькая тонкая рамочка.</span>
+    </div>
+    <div class="error-card">
+      <strong>Перепутала premium-button с choice-frame</strong>
+      <span>choice-frame — большой контейнер вокруг всех вариантов. premium-button — одна маленькая кнопка 💎.</span>
+    </div>
+    <div class="error-card">
+      <strong>Поставила radius когда есть PNG-рамка</strong>
+      <span>Скругление ломает углы рамки. Ставь radius = 0px если используешь PNG.</span>
     </div>
   </div>
 </section>
